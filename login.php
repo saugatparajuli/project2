@@ -1,4 +1,3 @@
-<?php session_start();?>
 <?php include 'includes/header.php' ?>
 
 <div class="flex justify-center items-center my-10" >
@@ -33,6 +32,10 @@ if(isset($_POST['login']))
         $row = mysqli_fetch_assoc($result);
         $_SESSION['Username'] = $row['fullname'];
         $_SESSION['islogin'] = 'yes';
+        $_SESSION['role'] ==$row ['row'];
+        if ($row ['role']=='user') 
+            header('location: index.php');
+        else
         header('location: admin/dashboard.php');
     }
     else
